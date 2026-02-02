@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="TheWorstCalculator/TheWorstCalculator.vcxproj" Id="75e05408-2050-4e6a-a894-db62340f2dd4" />
+</Solution>

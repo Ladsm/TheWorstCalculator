@@ -1,0 +1,37 @@
+#pragma once
+#include <iostream>
+namespace main
+{
+	namespace loop
+	{
+		namespace userinput
+		{
+			namespace Wraper
+			{
+				double doubleinputWraper(double get);
+				char charinputWraper(char get);
+			}
+		}
+		namespace output
+		{
+			void outWraper(std::string outtext);
+		}
+		namespace checks
+		{
+			namespace simple
+			{
+				bool Add(char get);
+				bool Subtract(char get);
+			}
+			namespace hard
+			{
+				bool Multiplication(char get);
+				bool Divide(char get);
+			}
+		}
+		namespace therealloop
+		{
+			void realMain();
+		}
+	}
+}
