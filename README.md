@@ -50,7 +50,9 @@ Main
             ┗a
              ┗chaar
                 ┣Real
-                ┃  ┣bubblesort()
+                ┃  ┣sorts
+                ┃  ┃  ┣bubblesort()
+                ┃  ┃  ┗gnomeSort()
                 ┃  ┗oh
                 ┃    ┗FAKELOLOLOLOLOLOLOLOL
                 ┃               ┗orIs
