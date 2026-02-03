@@ -6,7 +6,7 @@ Key:
 <text> = namespace
 <text>() = function
 <text>. = struct
-S.<text = string
+S.<text> = string
 
 Main
  ┃
