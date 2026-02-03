@@ -18,19 +18,19 @@ Main
  ┃         ┗Divide
  ┃            ┗Divide()
  ┗loop
-   ┣userinput
-   ┃   ┗Wraper
-   ┃      ┣doubleinputWraper()
-   ┃      ┗charinputWraper()
-   ┣output
-   ┃   ┗outWraper()
-   ┣checks
-   ┃  ┣simple
-   ┃  ┃  ┣Add()
-   ┃  ┃  ┗Subtract()
-   ┃  ┗hard
-   ┃    ┣Multiplication()
-   ┃    ┗Divide()
-   ┗therealloop
-         ┗realMain()
+    ┣userinput
+    ┃   ┗Wraper
+    ┃      ┣doubleinputWraper()
+    ┃      ┗charinputWraper()
+    ┣output
+    ┃   ┗outWraper()
+    ┣checks
+    ┃  ┣simple
+    ┃  ┃  ┣Add()
+    ┃  ┃  ┗Subtract()
+    ┃  ┗hard
+    ┃    ┣Multiplication()
+    ┃    ┗Divide()
+    ┗therealloop
+          ┗realMain()
 ```
