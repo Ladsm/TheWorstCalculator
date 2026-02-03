@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-namespace main
+namespace Main
 {
 	namespace loop
 	{
@@ -31,7 +31,7 @@ namespace main
 		}
 		namespace therealloop
 		{
-			void realMain();
+			void realmain();
 		}
 	}
 }

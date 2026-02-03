@@ -1,9 +1,8 @@
 #include "Calculator.h"
 #include "loop.h"
-#include <tchar.h>
 
-int _tmain(int argc, _TCHAR* argv[])
+int main()
 {
-	main::loop::therealloop::realMain();
+	Main::loop::therealloop::realmain();
 	return 0;
 }

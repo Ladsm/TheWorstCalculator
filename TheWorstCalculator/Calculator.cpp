@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-namespace main
+namespace Main
 {
 	namespace TheCalculations
 	{
@@ -45,10 +45,10 @@ namespace main
 				{
 					if (Y == 0)
 					{
-						main::loop::output::outWraper("Enjoy the stack over flow bitch\r");
+						Main::loop::output::outWraper("Enjoy the stack over flow bitch\r");
 						while (true)
 						{
-							main::TheCalculations::hard::Divide::Divide(0, 0);
+							Main::TheCalculations::hard::Divide::Divide(0, 0);
 						}
 					}
 					double iresult = X / Y;

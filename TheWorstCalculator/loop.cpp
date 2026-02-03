@@ -1,7 +1,7 @@
 #include "loop.h"
 #include "Calculator.h"
 
-namespace main
+namespace Main
 {
 	namespace loop
 	{
@@ -85,41 +85,41 @@ namespace main
 		}
 		namespace therealloop
 		{
-			void realMain() 
+			void realmain() 
 			{ 
 				double twonums[2] = { 0 , 0};
 				char operation = '+';
-				main::loop::output::outWraper("Calculator program. operations : +, -, *, /");
+				Main::loop::output::outWraper("Calculator program. operations : +, -, *, /");
 				while (true)
 				{
-					main::loop::output::outWraper("Please input the first number : ");
-					twonums[0] = main::loop::userinput::Wraper::doubleinputWraper(twonums[0]);
-					main::loop::output::outWraper("Please input the operation : ");
-					operation = main::loop::userinput::Wraper::charinputWraper(operation);
-					main::loop::output::outWraper("Please input the second number : ");
-					twonums[1] = main::loop::userinput::Wraper::doubleinputWraper(twonums[1]);
-					if (main::loop::checks::simple::Add(operation) == true)
+					Main::loop::output::outWraper("Please input the first number : ");
+					twonums[0] = Main::loop::userinput::Wraper::doubleinputWraper(twonums[0]);
+					Main::loop::output::outWraper("Please input the operation : ");
+					operation = Main::loop::userinput::Wraper::charinputWraper(operation);
+					Main::loop::output::outWraper("Please input the second number : ");
+					twonums[1] = Main::loop::userinput::Wraper::doubleinputWraper(twonums[1]);
+					if (Main::loop::checks::simple::Add(operation) == true)
 					{
-						std::cout << main::TheCalculations::simple::Add::Add(twonums[0], twonums[1]) << '\n';
+						std::cout << Main::TheCalculations::simple::Add::Add(twonums[0], twonums[1]) << '\n';
 					}
-					else if (main::loop::checks::simple::Subtract(operation) == true)
+					else if (Main::loop::checks::simple::Subtract(operation) == true)
 					{
-						std::cout << main::TheCalculations::simple::Subtract::Subtract(twonums[0], twonums[1]) << '\n';
+						std::cout << Main::TheCalculations::simple::Subtract::Subtract(twonums[0], twonums[1]) << '\n';
 					}
-					else if (main::loop::checks::hard::Multiplication(operation) == true)
+					else if (Main::loop::checks::hard::Multiplication(operation) == true)
 					{
-						std::cout << main::TheCalculations::hard::Multiplication::Multiplication(twonums[0], twonums[1]) << '\n';
+						std::cout << Main::TheCalculations::hard::Multiplication::Multiplication(twonums[0], twonums[1]) << '\n';
 					}
-					else if (main::loop::checks::hard::Divide(operation) == true)
+					else if (Main::loop::checks::hard::Divide(operation) == true)
 					{
-						std::cout << main::TheCalculations::hard::Divide::Divide(twonums[0], twonums[1]) << '\n';
+						std::cout << Main::TheCalculations::hard::Divide::Divide(twonums[0], twonums[1]) << '\n';
 					}
 					else
 					{
-						main::loop::output::outWraper("Enjoy the stack over flow bitch\r");
+						Main::loop::output::outWraper("Enjoy the stack over flow bitch\r");
 						while (true)
 						{
-							main::TheCalculations::hard::Divide::Divide(0, 0);
+							Main::TheCalculations::hard::Divide::Divide(0, 0);
 						}
 					}
 				}
