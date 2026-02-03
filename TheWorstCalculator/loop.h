@@ -6,7 +6,7 @@ namespace Main
 	{
 		namespace userinput
 		{
-			namespace Wraper
+			namespace Wrapper
 			{
 				double doubleinputWraper(double get);
 				char charinputWraper(char get);
