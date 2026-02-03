@@ -34,7 +34,11 @@ namespace Main
 							{
 								namespace Real
 								{
-									void bubblesort(int arrayToSort[], int sizeOfArray);
+									namespace sorts
+									{
+										void bubblesort(int arrayToSort[], int sizeOfArray);
+										void gnomeSort(int arrayToSort[], int sizeOfArray);
+									}
 									namespace oh
 									{
 										namespace FAKELOLOLOLOLOLOLOLOL
