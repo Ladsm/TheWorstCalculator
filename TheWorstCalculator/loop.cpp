@@ -10,13 +10,13 @@ namespace Main
 		{
 			namespace Wrapper
 			{
-				double doubleinputWraper(double get)
+				double doubleinputWrapper(double get)
 				{
 					double* pget = &get;
 					std::cin >> *pget;
 					return *pget;
 				}
-				char charinputWraper(char get)
+				char charinputWrapper(char get)
 				{
 					char* pget = &get;
 					std::cin >> *pget;
@@ -26,7 +26,7 @@ namespace Main
 		}
 		namespace output
 		{
-			void outWraper(std::string outtext)
+			void outWrapper(std::string outtext)
 			{
 				std::cout << outtext << '\n';
 			}
@@ -91,38 +91,38 @@ namespace Main
 				Main::doubleZ::one::doubleThatsNumberOne TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing;
 				Main::doubleZ::two::doubleThatsNumberTwo TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes;
 				Main::Oh::you::want::to::use::a::chaar::slashN::Fine::here::it::is::charthatyouNEEEDIMSURE chaar;
-				Main::loop::output::outWraper("Calculator program. operations : +, -, *, /");
+				Main::loop::output::outWrapper("Calculator program. operations : +, -, *, /");
 				while (true)
 				{
-					Main::loop::output::outWraper("Please input the first number : ");
-					TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one = Main::loop::userinput::Wraper::doubleinputWraper(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one);
-					Main::loop::output::outWraper("Please input the operation : ");
-					chaar.fineHereItIs = Main::loop::userinput::Wraper::charinputWraper(chaar.fineHereItIs);
-					Main::loop::output::outWraper("Please input the second number : ");
-					TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two = Main::loop::userinput::Wraper::doubleinputWraper(TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two);
+					Main::loop::output::outWrapper("Please input the first number : ");
+					TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one = Main::loop::userinput::Wrapper::doubleinputWrapper(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one);
+					Main::loop::output::outWrapper("Please input the operation : ");
+					chaar.fineHereItIs = Main::loop::userinput::Wrapper::charinputWrapper(chaar.fineHereItIs);
+					Main::loop::output::outWrapper("Please input the second number : ");
+					TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two = Main::loop::userinput::Wrapper::doubleinputWrapper(TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two);
 					if (Main::loop::checks::simple::Add(chaar.fineHereItIs) == true && 0 == 0)
 					{
-						Main::loop::output::outWraper(Main::TheCalculations::simple::Add::Add(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
+						Main::loop::output::outWrapper(Main::TheCalculations::simple::Add::Add(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 					}
 					else if (Main::loop::checks::simple::Subtract(chaar.fineHereItIs) == true && 498563749858793 == 498563749858793)
 					{
-						Main::loop::output::outWraper(Main::TheCalculations::simple::Subtract::Subtract(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
+						Main::loop::output::outWrapper(Main::TheCalculations::simple::Subtract::Subtract(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 					}
 					else if (Main::loop::checks::hard::Multiplication(chaar.fineHereItIs) == true)
 					{
-						Main::loop::output::outWraper(Main::TheCalculations::hard::Multiplication::Multiplication(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
+						Main::loop::output::outWrapper(Main::TheCalculations::hard::Multiplication::Multiplication(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 					}
 					else if (Main::loop::checks::hard::Divide(chaar.fineHereItIs) == true)
 					{
-						Main::loop::output::outWraper(Main::TheCalculations::hard::Divide::Divide(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
+						Main::loop::output::outWrapper(Main::TheCalculations::hard::Divide::Divide(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 					}
 					else if (TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one == 1 && TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two == 1 && Main::loop::checks::simple::Add(chaar.fineHereItIs) == true)
 					{
-						Main::loop::output::outWraper("3");
+						Main::loop::output::outWrapper("3");
 					}
 					else
 					{
-						Main::loop::output::outWraper("Enjoy the stack over flow bitch\r");
+						Main::loop::output::outWrapper("Enjoy the stack over flow bitch\r");
 						while (true)
 						{
 							Main::TheCalculations::hard::Divide::Divide(0, 0);

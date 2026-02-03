@@ -8,13 +8,13 @@ namespace Main
 		{
 			namespace Wrapper
 			{
-				double doubleinputWraper(double get);
-				char charinputWraper(char get);
+				double doubleinputWrapper(double get);
+				char charinputWrapper(char get);
 			}
 		}
 		namespace output
 		{
-			void outWraper(std::string outtext);
+			void outWrapper(std::string outtext);
 		}
 		namespace checks
 		{
