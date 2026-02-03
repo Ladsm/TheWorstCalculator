@@ -23,11 +23,11 @@ Main
  ┃            ┗Divide()
  ┣loop
  ┃  ┣userinput
- ┃  ┃   ┗Wraper
- ┃  ┃      ┣doubleinputWraper()
- ┃  ┃      ┗charinputWraper()
+ ┃  ┃   ┗Wrapper
+ ┃  ┃      ┣doubleinputWrapper()
+ ┃  ┃      ┗charinputWrapper()
  ┃  ┣output
- ┃  ┃   ┗outWraper()
+ ┃  ┃   ┗outWrapper()
  ┃  ┣checks
  ┃  ┃  ┣simple
  ┃  ┃  ┃  ┣Add()
