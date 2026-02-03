@@ -1,5 +1,6 @@
 #include "loop.h"
 #include "Calculator.h"
+#include "MoreDots.h"
 
 namespace Main
 {
@@ -87,32 +88,37 @@ namespace Main
 		{
 			void realmain() 
 			{ 
-				double twonums[2] = { 0 , 0};
-				char operation = '+';
+				Main::doubleZ::one::doubleThatsNumberOne TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing;
+				Main::doubleZ::two::doubleThatsNumberTwo TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes;
+				Main::Oh::you::want::to::use::a::chaar::slashN::Fine::here::it::is::charthatyouNEEEDIMSURE chaar;
 				Main::loop::output::outWraper("Calculator program. operations : +, -, *, /");
 				while (true)
 				{
 					Main::loop::output::outWraper("Please input the first number : ");
-					twonums[0] = Main::loop::userinput::Wraper::doubleinputWraper(twonums[0]);
+					TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one = Main::loop::userinput::Wraper::doubleinputWraper(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one);
 					Main::loop::output::outWraper("Please input the operation : ");
-					operation = Main::loop::userinput::Wraper::charinputWraper(operation);
+					chaar.fineHereItIs = Main::loop::userinput::Wraper::charinputWraper(chaar.fineHereItIs);
 					Main::loop::output::outWraper("Please input the second number : ");
-					twonums[1] = Main::loop::userinput::Wraper::doubleinputWraper(twonums[1]);
-					if (Main::loop::checks::simple::Add(operation) == true)
+					TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two = Main::loop::userinput::Wraper::doubleinputWraper(TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two);
+					if (Main::loop::checks::simple::Add(chaar.fineHereItIs) == true && 0 == 0)
 					{
-						std::cout << Main::TheCalculations::simple::Add::Add(twonums[0], twonums[1]) << '\n';
+						Main::loop::output::outWraper(Main::TheCalculations::simple::Add::Add(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 					}
-					else if (Main::loop::checks::simple::Subtract(operation) == true)
+					else if (Main::loop::checks::simple::Subtract(chaar.fineHereItIs) == true && 498563749858793 == 498563749858793)
 					{
-						std::cout << Main::TheCalculations::simple::Subtract::Subtract(twonums[0], twonums[1]) << '\n';
+						Main::loop::output::outWraper(Main::TheCalculations::simple::Subtract::Subtract(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 					}
-					else if (Main::loop::checks::hard::Multiplication(operation) == true)
+					else if (Main::loop::checks::hard::Multiplication(chaar.fineHereItIs) == true)
 					{
-						std::cout << Main::TheCalculations::hard::Multiplication::Multiplication(twonums[0], twonums[1]) << '\n';
+						Main::loop::output::outWraper(Main::TheCalculations::hard::Multiplication::Multiplication(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 					}
-					else if (Main::loop::checks::hard::Divide(operation) == true)
+					else if (Main::loop::checks::hard::Divide(chaar.fineHereItIs) == true)
 					{
-						std::cout << Main::TheCalculations::hard::Divide::Divide(twonums[0], twonums[1]) << '\n';
+						Main::loop::output::outWraper(Main::TheCalculations::hard::Divide::Divide(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
+					}
+					else if (TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one == 1 && TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two == 1 && Main::loop::checks::simple::Add(chaar.fineHereItIs) == true)
+					{
+						Main::loop::output::outWraper("3");
 					}
 					else
 					{

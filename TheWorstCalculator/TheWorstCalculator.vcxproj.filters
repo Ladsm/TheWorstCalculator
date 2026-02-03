@@ -32,5 +32,8 @@
     <ClInclude Include="loop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MoreDots.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
