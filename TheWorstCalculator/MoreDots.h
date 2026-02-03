@@ -34,6 +34,7 @@ namespace Main
 							{
 								namespace Real
 								{
+									void bubblesort(int arrayToSort[], int sizeOfArray);
 									namespace oh
 									{
 										namespace FAKELOLOLOLOLOLOLOLOL

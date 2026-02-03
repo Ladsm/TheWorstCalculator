@@ -130,6 +130,7 @@
     <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="loop.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MoreDots.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculator.h" />

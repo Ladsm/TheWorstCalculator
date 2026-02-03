@@ -24,6 +24,9 @@
     <ClCompile Include="loop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MoreDots.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculator.h">
