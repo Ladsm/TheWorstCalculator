@@ -1,32 +1,36 @@
 Program Structure:
 ```sh
+Key:
+<text> = namespace
+<text>() = function
+
 Main
  ┃
  ┣TheCalculations
  ┃      ┣simple
  ┃      ┃   ┣Add
- ┃      ┃   ┃ ┗Add
+ ┃      ┃   ┃ ┗Add()
  ┃      ┃   ┗Subtract
- ┃      ┃       ┗Subtract
+ ┃      ┃       ┗Subtract()
  ┃      ┗hard
  ┃         ┣Multiplication
- ┃         ┃       ┗Multiplication
+ ┃         ┃       ┗Multiplication()
  ┃         ┗Divide
- ┃            ┗Divide
+ ┃            ┗Divide()
  ┗loop
    ┣userinput
    ┃   ┗Wraper
-   ┃      ┣doubleinputWraper
-   ┃      ┗charinputWraper
+   ┃      ┣doubleinputWraper()
+   ┃      ┗charinputWraper()
    ┣output
-   ┃   ┗outWraper
+   ┃   ┗outWraper()
    ┣checks
    ┃  ┣simple
-   ┃  ┃  ┣Add
-   ┃  ┃  ┗Subtract
+   ┃  ┃  ┣Add()
+   ┃  ┃  ┗Subtract()
    ┃  ┗hard
-   ┃    ┣Multiplication
-   ┃    ┗Divide
+   ┃    ┣Multiplication()
+   ┃    ┗Divide()
    ┗therealloop
-         ┗realMain
+         ┗realMain()
 ```
