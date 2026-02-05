@@ -88,27 +88,40 @@ namespace Main
 		namespace therealloop
 		{
 			void realmain() 
-			{ 
+			{
+				//creates random device
 				std::random_device rd;
+				//idk bro wtf is this but what evs
 				std::mt19937 gen(rd());
+				//bernoulli? who is that, prob smart guy.
 				std::bernoulli_distribution x;
+				//first number
 				Main::doubleZ::one::doubleThatsNumberOne TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing;
+				//second number
 				Main::doubleZ::two::doubleThatsNumberTwo TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes;
+				//chhhhhhaaaarrrr
 				Main::Oh::you::want::to::use::a::chaar::slashN::Fine::here::it::is::charthatyouNEEEDIMSURE chaar;
+				//print
 				Main::loop::output::outWrapper("Calculator program. operations : +, -, *, /");
 				while (true)
 				{
+					//give the calculator a brake man
 					bool crash = x(gen);
 					if (crash == true) {
 						std::cout << "dont feel like it\n";
 						std::_Exit(69420);
 					}
+					//input the first number please
 					Main::loop::output::outWrapper("Please input the first number : ");
+					//set it
 					TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one = Main::loop::userinput::Wrapper::doubleinputWrapper(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one);
+					//input the operation, please
 					Main::loop::output::outWrapper("Please input the operation : ");
 					chaar.fineHereItIs = Main::loop::userinput::Wrapper::charinputWrapper(chaar.fineHereItIs);
+					//INPUT THE SECOND NUMBER, THATS AN ORDER!
 					Main::loop::output::outWrapper("Please input the second number : ");
 					TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two = Main::loop::userinput::Wrapper::doubleinputWrapper(TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two);
+					//checks
 					if (Main::loop::checks::simple::Add(chaar.fineHereItIs) == true && 0 == 0)
 					{
 						Main::loop::output::outWrapper(Main::TheCalculations::simple::Add::Add(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
@@ -131,6 +144,7 @@ namespace Main
 					}
 					else
 					{
+						//what else whould you think would happen bro
 						Main::loop::output::outWrapper("Enjoy the stack over flow bitch\r");
 						while (true)
 						{
