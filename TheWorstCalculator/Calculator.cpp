@@ -14,7 +14,11 @@ namespace Main
 				std::string Add(double X, double Y)
 				{
 					double iresult = X + Y;
-					std::string result = std::to_string(iresult);
+					double Rresult = 0;
+					for (int i = 0; i < iresult; i++) {
+						Rresult++;
+					}
+					std::string result = std::to_string(Rresult);
 					return result;
 				}
 			}
@@ -23,7 +27,11 @@ namespace Main
 				std::string Subtract(double X, double Y)
 				{
 					double iresult = X - Y;
-					std::string result = std::to_string(iresult);
+					double Rresult = 0;
+					for (int i = 0; i < iresult; i++) {
+						Rresult++;
+					}
+					std::string result = std::to_string(Rresult);
 					return result;
 				}
 			}
@@ -35,7 +43,11 @@ namespace Main
 				std::string Multiplication(double X, double Y)
 				{
 					double iresult = X * Y;
-					std::string result = std::to_string(iresult);
+					double Rresult = 0;
+					for (int i = 0; i < iresult; i++) {
+						Rresult++;
+					}
+					std::string result = std::to_string(Rresult);
 					return result;
 				}
 			}
@@ -52,7 +64,11 @@ namespace Main
 						}
 					}
 					double iresult = X / Y;
-					std::string result = std::to_string(iresult);
+					double Rresult = 0;
+					for (int i = 0; i < iresult; i++) {
+						Rresult++;
+					}
+					std::string result = std::to_string(Rresult);
 					return result;
 				}
 			}

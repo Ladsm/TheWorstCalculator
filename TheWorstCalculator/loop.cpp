@@ -1,6 +1,7 @@
 #include "loop.h"
 #include "Calculator.h"
 #include "MoreDots.h"
+#include <random>
 
 namespace Main
 {
@@ -88,12 +89,20 @@ namespace Main
 		{
 			void realmain() 
 			{ 
+				std::random_device rd;
+				std::mt19937 gen(rd());
+				std::bernoulli_distribution x;
 				Main::doubleZ::one::doubleThatsNumberOne TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing;
 				Main::doubleZ::two::doubleThatsNumberTwo TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes;
 				Main::Oh::you::want::to::use::a::chaar::slashN::Fine::here::it::is::charthatyouNEEEDIMSURE chaar;
 				Main::loop::output::outWrapper("Calculator program. operations : +, -, *, /");
 				while (true)
 				{
+					bool crash = x(gen);
+					if (crash == true) {
+						std::cout << "dont feel like it\n";
+						std::_Exit(69420);
+					}
 					Main::loop::output::outWrapper("Please input the first number : ");
 					TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one = Main::loop::userinput::Wrapper::doubleinputWrapper(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one);
 					Main::loop::output::outWrapper("Please input the operation : ");
