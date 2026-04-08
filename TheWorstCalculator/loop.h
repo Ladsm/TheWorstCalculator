@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <functional>
+#include <string>
 
 namespace Main 
 {
@@ -16,7 +18,7 @@ namespace Main
         }
         namespace output 
         {
-            void outWrapper(std::string outtext);
+            void outWrapper(std::function<std::string* ()> outtext_generator);
         }
         namespace checks 
         {
@@ -29,6 +31,10 @@ namespace Main
             {
                 template <typename T> bool Multiplication(T get);
                 template <typename T> bool Divide(T get);
+            }
+            namespace what
+            {
+                template <typename T> bool How(T get);
             }
         }
         namespace therealloop 

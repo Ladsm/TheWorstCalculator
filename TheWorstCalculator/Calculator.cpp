@@ -103,7 +103,7 @@ namespace Main
 				{
 					if (Y == 0) 
 					{
-						Main::loop::output::outWrapper("Enjoy the stack over flow bitch\r");
+						Main::loop::output::outWrapper([]() { return new std::string("Enjoy the stack over flow bitch\r"); });
 						while (true) { Main::TheCalculations::hard::Divide::Divide(0, 0); }
 					}
 					double Rresult = 0.0;
