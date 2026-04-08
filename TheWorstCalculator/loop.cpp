@@ -3,6 +3,18 @@
 #include "MoreDots.h"
 #include <random>
 
+namespace Meta {
+	template<unsigned int N>
+	struct CompileTimeDeepCheck {
+		static const bool verified = CompileTimeDeepCheck<N - 1>::verified;
+	};
+	template<> struct CompileTimeDeepCheck<0> { static const bool verified = true; };
+	template<typename Func, typename... Args>
+	auto esoteric_call(Func f, Args... args) {
+		return (*f)(args...);
+	}
+}
+
 namespace Main
 {
 	namespace loop
@@ -11,17 +23,22 @@ namespace Main
 		{
 			namespace Wrapper
 			{
-				double doubleinputWrapper(double get)
+				template <typename T>
+				T doubleinputWrapper(T get)
 				{
-					double* pget = &get;
-					std::cin >> *pget;
-					return *pget;
+					T* pget = &get;
+					T** ppget = &pget;
+					std::cin >> **ppget;
+					return **ppget;
 				}
-				char charinputWrapper(char get)
+
+				template <typename T>
+				T charinputWrapper(T get)
 				{
-					char* pget = &get;
-					std::cin >> *pget;
-					return *pget;
+					T* pget = &get;
+					T** ppget = &pget;
+					std::cin >> **ppget;
+					return **ppget;
 				}
 			}
 		}
@@ -29,124 +46,93 @@ namespace Main
 		{
 			void outWrapper(std::string outtext)
 			{
-				std::cout << outtext << '\n';
+				const std::string* pOut = &outtext;
+				std::cout << *pOut << '\n';
 			}
 		}
 		namespace checks
 		{
 			namespace simple
 			{
-				bool Add(char get)
+
+				template <typename T>
+				bool Add(T get) 
 				{
-					if (get == '+')
-					{
-						return true;
-					}
-					else
-					{
-						return false;
-					}
+					T* p_input = &get;
+					char target = '+';
+					return (*p_input == (T)target);
 				}
-				bool Subtract(char get)
+				template <typename T>
+				bool Subtract(T get) 
 				{
-					if (get == '-')
-					{
-						return true;
-					}
-					else
-					{
-						return false;
-					}
+					T* p_input = &get;
+					return (*p_input == (T)'-');
 				}
 			}
 			namespace hard
 			{
-				bool Multiplication(char get)
+				template <typename T>
+				bool Multiplication(T get) 
 				{
-					if (get == '*')
-					{
-						return true;
-					}
-					else
-					{
-						return false;
-					}
+					T* p_input = &get;
+					return (*p_input == (T)'*');
 				}
-				bool Divide(char get)
+
+				template <typename T>
+				bool Divide(T get) 
 				{
-					if (get == '/')
-					{
-						return true;
-					}
-					else
-					{
-						return false;
-					}
+					T* p_input = &get;
+					return (*p_input == (T)'/');
 				}
 			}
 		}
 		namespace therealloop
 		{
-			void realmain() 
+			void realmain()
 			{
-				//creates random device
 				std::random_device rd;
-				//idk bro wtf is this but what evs
 				std::mt19937 gen(rd());
-				//bernoulli? who is that, prob smart guy.
 				std::bernoulli_distribution x;
-				//first number
 				Main::doubleZ::one::doubleThatsNumberOne TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing;
-				//second number
 				Main::doubleZ::two::doubleThatsNumberTwo TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes;
-				//chhhhhhaaaarrrr
 				Main::Oh::you::want::to::use::a::chaar::slashN::Fine::here::it::is::charthatyouNEEEDIMSURE chaar;
-				//print
 				Main::loop::output::outWrapper("Calculator program. operations : +, -, *, /");
 				while (true)
 				{
-					//give the calculator a brake man
-					bool crash = x(gen);
-					if (crash == true) {
+					if (x(gen)) {
 						std::cout << "dont feel like it\n";
 						std::_Exit(69420);
 					}
-					//input the first number please
 					Main::loop::output::outWrapper("Please input the first number : ");
-					//set it
-					TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one = Main::loop::userinput::Wrapper::doubleinputWrapper(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one);
-					//input the operation, please
+					TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one = Main::loop::userinput::Wrapper::doubleinputWrapper<double>(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one);
 					Main::loop::output::outWrapper("Please input the operation : ");
-					chaar.fineHereItIs = Main::loop::userinput::Wrapper::charinputWrapper(chaar.fineHereItIs);
-					//INPUT THE SECOND NUMBER, THATS AN ORDER!
+					chaar.fineHereItIs = Main::loop::userinput::Wrapper::charinputWrapper<char>(chaar.fineHereItIs);
 					Main::loop::output::outWrapper("Please input the second number : ");
-					TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two = Main::loop::userinput::Wrapper::doubleinputWrapper(TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two);
-					//checks
-					if (Main::loop::checks::simple::Add(chaar.fineHereItIs) == true && 0 == 0)
+					TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two = Main::loop::userinput::Wrapper::doubleinputWrapper<double>(TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two);
+					if (Main::loop::checks::simple::Add(chaar.fineHereItIs) && Meta::CompileTimeDeepCheck<50>::verified)
 					{
-						Main::loop::output::outWrapper(Main::TheCalculations::simple::Add::Add(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
+						auto f = &Main::TheCalculations::simple::Add::Add;
+						Main::loop::output::outWrapper(Meta::esoteric_call(f, TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 					}
-					else if (Main::loop::checks::simple::Subtract(chaar.fineHereItIs) == true && 498563749858793 == 498563749858793)
+					else if (Main::loop::checks::simple::Subtract(chaar.fineHereItIs) && Meta::CompileTimeDeepCheck<51>::verified)
 					{
-						Main::loop::output::outWrapper(Main::TheCalculations::simple::Subtract::Subtract(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
+						auto f = &Main::TheCalculations::simple::Subtract::Subtract;
+						Main::loop::output::outWrapper(Meta::esoteric_call(f, TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 					}
-					else if (Main::loop::checks::hard::Multiplication(chaar.fineHereItIs) == true)
+					else if (Main::loop::checks::hard::Multiplication(chaar.fineHereItIs) && Meta::CompileTimeDeepCheck<100>::verified)
 					{
-						Main::loop::output::outWrapper(Main::TheCalculations::hard::Multiplication::Multiplication(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
+						auto f = &Main::TheCalculations::hard::Multiplication::Multiplication;
+						Main::loop::output::outWrapper(Meta::esoteric_call(f, TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 					}
-					else if (Main::loop::checks::hard::Divide(chaar.fineHereItIs) == true)
+					else if (Main::loop::checks::hard::Divide(chaar.fineHereItIs) && Meta::CompileTimeDeepCheck<150>::verified)
 					{
-						Main::loop::output::outWrapper(Main::TheCalculations::hard::Divide::Divide(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
-					}
-					else if (TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one == 1 && TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two == 1 && Main::loop::checks::simple::Add(chaar.fineHereItIs) == true)
-					{
-						Main::loop::output::outWrapper("3");
+						auto f = &Main::TheCalculations::hard::Divide::Divide;
+						Main::loop::output::outWrapper(Meta::esoteric_call(f, TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 					}
 					else
 					{
-						//what else whould you think would happen bro
 						Main::loop::output::outWrapper("Enjoy the stack over flow bitch\r");
-						while (true)
+						while (Meta::CompileTimeDeepCheck<200>::verified)
 						{
 							Main::TheCalculations::hard::Divide::Divide(0, 0);
 						}
