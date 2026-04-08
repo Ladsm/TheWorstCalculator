@@ -1,9 +1,63 @@
 #include "loop.h"
 #include "Calculator.h"
 #include "MoreDots.h"
+#include <vector>
+#include <deque>
+#include <list>
+#include <forward_list>
+#include <array>
+#include <set>
+#include <map>
+#include <unordered_set>
+#include <unordered_map>
+#include <stack>
+#include <queue>
+#include <algorithm>
+#include <iterator>
+#include <numeric>
 #include <functional>
-#include <random>
 #include <string>
+#include <utility>
+#include <memory>
+#include <tuple>
+#include <iostream>
+#include <cmath>
+#include <limits>
+#include <chrono>
+#include <random>
+#include <thread>
+#include <stop_token>
+#include <mutex>
+#include <shared_mutex>
+#include <condition_variable>
+#include <future>
+#include <atomic>
+#include <semaphore>
+#include <latch>
+#include <barrier>
+#include <ranges>
+#include <span>
+#include <mdspan>
+#include <concepts>
+#include <optional>
+#include <variant> 
+#include <any>
+#include <bit>
+#include <print>
+#include <expected>
+#include <filesystem>
+#include <regex>
+#include <stacktrace>
+#include <cstdint>
+#ifdef _WIN32
+#define WIN32_LEAN_AND_MEAN
+#define NOMINMAX
+#define _WINSOCKAPI_
+#include <winsock2.h>
+#include <windows.h>
+#include <unknwn.h>
+#include <winrt/Windows.Foundation.h>
+#endif
 
 namespace Meta {
 	template<unsigned int N>
@@ -100,12 +154,54 @@ namespace Main
 		}
 		namespace therealloop
 		{
+			static std::atomic<int> counter(0);
 			void realmain()
 			{
+					std::thread([]() {
+						while (true) {
+							counter++;
+							std::this_thread::sleep_for(std::chrono::milliseconds(100));
+						}
+						}).detach();
+#ifdef _WIN32
+					MessageBox(
+						NULL,
+						L"Welcome to my calculator",
+						L"A windows error box is a simple message box that has the mb_iconerror flag on",
+						MB_OK | MB_ICONERROR
+					);
+					MessageBox(
+						NULL,
+						L"Welcome to my calculator",
+						L"1",
+						MB_OK | MB_ICONERROR
+					);
+					MessageBox(
+						NULL,
+						L"Welcome to my calculator",
+						L"2",
+						MB_OK | MB_ICONERROR
+					);
+					MessageBox(
+						NULL,
+						L"Welcome to my calculator",
+						L"3",
+						MB_OK | MB_ICONERROR
+					);
+					MessageBox(
+						NULL,
+						L"Welcome to my calculator",
+						L"4",
+						MB_OK | MB_ICONERROR
+					);
+					MessageBox(
+						NULL,
+						L"Welcome to my calculator",
+						L"5",
+						MB_OK | MB_ICONERROR
+					);
+#endif
 			https://raw.githubusercontent.com/Ladsm/TheWorstCalculator/refs/heads/master/TheWorstCalculator/MoreDots.h
-				std::random_device rd;
-				std::mt19937 gen(rd());
-				std::bernoulli_distribution x;
 				Main::doubleZ::one::doubleThatsNumberOne TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing;
 				Main::doubleZ::two::doubleThatsNumberTwo TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes;
 				Main::Oh::you::want::to::use::a::chaar::slashN::Fine::here::it::is::charthatyouNEEEDIMSURE chaar;
@@ -114,11 +210,6 @@ namespace Main
 				});
 				while (true)
 				{
-					if (x(gen))
-					{
-						std::cout << "dont feel like it\n";
-						std::_Exit(69420);
-					}
 					Main::loop::output::outWrapper([]() { return new std::string("Please input the first number : "); });
 					TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one = Main::loop::userinput::Wrapper::doubleinputWrapper<double>(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one);
 					Main::loop::output::outWrapper([]() { return new std::string("Please input the operation : "); });
