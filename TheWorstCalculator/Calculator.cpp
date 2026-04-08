@@ -1,3 +1,4 @@
+#include "ofuscator.h"
 #include "Calculator.h"
 #include "loop.h"
 #include <cstdlib>
@@ -100,7 +101,7 @@ namespace Main
 				template <typename T>
 				struct Stepper {
 					static void increment(T** double_ptr) {
-						void* raw = (void*)(*double_ptr);
+						void* raw = (void*)(*double_ptr); 
 						**double_ptr = **double_ptr + 1.0;
 					}
 				};
@@ -114,6 +115,11 @@ namespace Main
 					for (int i = 0; i < static_cast<int>(iresult); i++)
 					{
 						Stepper<double>::increment(pp_result);
+#ifdef _WIN32
+						std::thread([i]() {
+							Beep(i, i);
+							}).join();
+#endif
 					}
 					std::string* final_str = new std::string(std::to_string(**pp_result));
 					std::string result = *final_str;
@@ -141,6 +147,12 @@ namespace Main
 					for (int i = 0; i < (int)iresult; i++)
 					{
 						**pp_Rresult += 1.0;
+#ifdef _WIN32
+						std::thread([i]() {
+							Beep(i, i);
+							}).join();
+#endif
+
 					}
 					std::string result = std::to_string(**pp_Rresult);
 					return result;
@@ -152,13 +164,18 @@ namespace Main
 			namespace Multiplication
 			{
 				template <typename T>
-				struct MatrixCruncher 
+				struct MatrixCruncher
 				{
-					static void deepAdd(T*** ppp_res, T val) 
+					static void deepAdd(T*** ppp_res, T val)
 					{
-						for (int j = 0; j < (int)val; j++) 
+						for (int j = 0; j < (int)val; j++)
 						{
 							***ppp_res += 1.0;
+#ifdef _WIN32
+							std::thread([j]() {
+								Beep(j, j);
+								}).join();
+#endif
 						}
 					}
 				};
@@ -168,28 +185,36 @@ namespace Main
 					double* p_res = &Rresult;
 					double** pp_res = &p_res;
 					double*** ppp_res = &pp_res;
-					for (int i = 0; i < (int)Y; i++) 
+					double**** pppp_res = &ppp_res;
+					double***** ppppp_res = &pppp_res;
+					double****** pppppp_res = &ppppp_res;
+					for (int i = 0; i < (int)Y; i++)
 					{
 						MatrixCruncher<double>::deepAdd(ppp_res, X);
+#ifdef _WIN32
+						std::thread([i]() {
+							Beep(i, i);
+							}).join();
+#endif
 					}
-					return std::to_string(***ppp_res);
+					return std::to_string(******pppppp_res);
 				}
 			}
 			namespace Divide
 			{
 				template <typename T>
-				struct Searcher 
+				struct Searcher
 				{
-					static bool isMatch(T current_guess, T target_x, T divisor_y) 
+					static bool isMatch(T current_guess, T target_x, T divisor_y)
 					{
 						return (current_guess * divisor_y) <= target_x;
 					}
 				};
 				std::string Divide(double X, double Y)
 				{
-					if (Y == 0) 
+					if (Y == 0)
 					{
-						Main::loop::output::outWrapper([]() { return new std::string("Enjoy the stack over flow bitch\r"); });
+						Main::loop::output::outWrapper([]() { return new std::string(H("Enjoy the stack over flow bitch\r")); });
 						while (true) { Main::TheCalculations::hard::Divide::Divide(0, 0); }
 					}
 					double Rresult = 0.0;

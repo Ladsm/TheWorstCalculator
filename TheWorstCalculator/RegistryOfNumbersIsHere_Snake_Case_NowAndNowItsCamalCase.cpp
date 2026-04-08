@@ -1,5 +1,4 @@
-#include "Calculator.h"
-#include "loop.h"
+#include "RegistryOfNumbersIsHere_Snake_Case_NowAndNowItsCamalCase.h"
 #include <cstdlib>
 #include <csignal>
 #include <csetjmp>
@@ -81,15 +80,48 @@
 #include <cstdbool>
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
-#define NOMINMAX 
+#define NOMINMAX
 #define _WINSOCKAPI_
-#include <winsock2.h> 
+#include <winsock2.h>
 #include <windows.h>
 #include <unknwn.h>
 #include <winrt/Windows.Foundation.h>
 #endif
-int main()
+
+namespace Main
 {
-	Main::loop::therealloop::realmain();
-	return 0;
+	namespace Memory
+	{
+		namespace Registry
+		{
+			namespace functions
+			{
+                void InitializeRegistry()
+                {
+                    using namespace Main::Memory::Registry::numbers;
+                    UniversalRegistry = (double*)VirtualAlloc(NULL, REGISTRY_SIZE * sizeof(double), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+                    for (int i = 0; i < REGISTRY_SIZE; i++) 
+                    {
+                        UniversalRegistry[i] = (double)i;
+                    }
+                }
+                template <typename T>
+                T FetchNumberRecursive(T target, int index) 
+                {
+                    using namespace Main::Memory::Registry::numbers;
+                    if (UniversalRegistry[index] == (double)target)
+                    {
+                        return (T)UniversalRegistry[index];
+                    }
+                    return FetchNumberRecursive<T>(target, index + 1);
+                }
+                template <typename T>
+                T FetchNumber(T target) 
+                {
+                    return FetchNumberRecursive<T>(target, 0);
+                }
+			}
+		}
+	} 
 }
+template double Main::Memory::Registry::functions::FetchNumber<double>(double);

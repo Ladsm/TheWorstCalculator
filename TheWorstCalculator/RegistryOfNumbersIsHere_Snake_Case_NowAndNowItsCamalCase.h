@@ -1,5 +1,3 @@
-#include "Calculator.h"
-#include "loop.h"
 #include <cstdlib>
 #include <csignal>
 #include <csetjmp>
@@ -81,15 +79,33 @@
 #include <cstdbool>
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
-#define NOMINMAX 
+#define NOMINMAX
 #define _WINSOCKAPI_
-#include <winsock2.h> 
+#include <winsock2.h>
 #include <windows.h>
 #include <unknwn.h>
 #include <winrt/Windows.Foundation.h>
 #endif
-int main()
+
+namespace Main
 {
-	Main::loop::therealloop::realmain();
-	return 0;
+	namespace Memory
+	{
+		namespace Registry
+		{
+			namespace numbers
+			{
+				static double* UniversalRegistry = nullptr;
+				static const int REGISTRY_SIZE = 65536;
+			}
+			namespace functions
+			{
+				void InitializeRegistry();
+                template <typename T>
+				T FetchNumberRecursive(T target, int index);
+                template <typename T>
+                T FetchNumber(T target);
+			}
+		}
+	}
 }

@@ -1,3 +1,4 @@
+#include "ofuscator.h"
 #include <cstdlib>
 #include <csignal>
 #include <csetjmp>
@@ -136,7 +137,7 @@ namespace Main
 												{
 													namespace yes
 													{
-														std::string youFellForIt = "Fail";
+														std::string youFellForIt = H("Fail");
 													}
 												}
 											}

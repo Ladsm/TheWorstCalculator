@@ -27,6 +27,9 @@
     <ClCompile Include="MoreDots.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RegistryOfNumbersIsHere_Snake_Case_NowAndNowItsCamalCase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculator.h">
@@ -36,6 +39,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MoreDots.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistryOfNumbersIsHere_Snake_Case_NowAndNowItsCamalCase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ofuscator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

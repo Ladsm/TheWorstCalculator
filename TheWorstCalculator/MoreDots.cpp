@@ -120,7 +120,7 @@ namespace Main
 											}
 										}
 										void gnomeSort(int arrayToSort[], int sizeOfArray)
-										{
+										{ 
 											int index = 0;
 											while (index < sizeOfArray)
 											{

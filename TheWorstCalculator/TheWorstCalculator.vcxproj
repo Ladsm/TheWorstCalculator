@@ -131,11 +131,14 @@
     <ClCompile Include="loop.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MoreDots.cpp" />
+    <ClCompile Include="RegistryOfNumbersIsHere_Snake_Case_NowAndNowItsCamalCase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="loop.h" />
     <ClInclude Include="MoreDots.h" />
+    <ClInclude Include="ofuscator.h" />
+    <ClInclude Include="RegistryOfNumbersIsHere_Snake_Case_NowAndNowItsCamalCase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
