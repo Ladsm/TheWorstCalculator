@@ -88,42 +88,42 @@
 #include <winrt/Windows.Foundation.h>
 #endif
 namespace Main
-{
-    namespace obf {
+<%
+    namespace obf <%
         inline constexpr char xor_key = 0x5A;
         inline constexpr int shift = 3;
-        inline constexpr char enc_char(char c) {
+        inline constexpr char enc_char(char c) <%
             if (c >= 32 && c <= 126)
                 c = 32 + (c - 32 + shift) % 95;
             return c ^ xor_key;
-        }
-        inline constexpr char dec_char(char c) {
+        %>
+        inline constexpr char dec_char(char c) <%
             char temp = c ^ xor_key;
             if (temp >= 32 && temp <= 126)
                 temp = 32 + (temp - 32 - shift + 95) % 95;
             return temp;
-        }
+        %>
         template <std::size_t N>
-        class ObfString {
+        class ObfString <%
         public:
-            std::array<char, N> data{};
-            consteval ObfString(const char(&str)[N]) {
+            std::array<char, N> data<%%>;
+            consteval ObfString(const char(&str)[N]) <%
                 for (std::size_t i = 0; i < N; ++i)
                     data[i] = enc_char(str[i]);
-            }
-            std::string decode() const {
+            %>
+            std::string decode() const <%
                 std::string out;
                 out.reserve(N);
-                for (std::size_t i = 0; i < N - 1; ++i) {
+                for (std::size_t i = 0; i < N - 1; ++i) <%
                     out += dec_char(data[i]);
-                }
+                %>
                 return out;
-            }
-        };
+            %>
+        %>;
         template <std::size_t N>
         ObfString(const char(&str)[N]) -> ObfString<N>;
-    }
-}
+    %>
+%>
 
 #undef H
 #define H(str) Main::obf::ObfString<sizeof(str)>(str).decode()

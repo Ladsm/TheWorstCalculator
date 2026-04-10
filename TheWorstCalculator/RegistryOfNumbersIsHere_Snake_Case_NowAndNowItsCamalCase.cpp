@@ -89,39 +89,39 @@
 #endif
 
 namespace Main
-{
+<%
 	namespace Memory
-	{
+	<%
 		namespace Registry
-		{
+		<%
 			namespace functions
-			{
+			<%
                 void InitializeRegistry()
-                {
+                <%
                     using namespace Main::Memory::Registry::numbers;
                     UniversalRegistry = (double*)VirtualAlloc(NULL, REGISTRY_SIZE * sizeof(double), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
                     for (int i = 0; i < REGISTRY_SIZE; i++) 
-                    {
+                    <%
                         UniversalRegistry[i] = (double)i;
-                    }
-                }
+                    %>
+                %>
                 template <typename T>
                 T FetchNumberRecursive(T target, int index) 
-                {
+                <%
                     using namespace Main::Memory::Registry::numbers;
                     if (UniversalRegistry[index] == (double)target)
-                    {
+                    <%
                         return (T)UniversalRegistry[index];
-                    }
+                    %>
                     return FetchNumberRecursive<T>(target, index + 1);
-                }
+                %>
                 template <typename T>
                 T FetchNumber(T target) 
-                {
+                <%
                     return FetchNumberRecursive<T>(target, 0);
-                }
-			}
-		}
-	} 
-}
+                %>
+			%>
+		%>
+	%> 
+%>
 template double Main::Memory::Registry::functions::FetchNumber<double>(double);

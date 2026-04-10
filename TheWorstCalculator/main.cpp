@@ -89,7 +89,7 @@
 #include <winrt/Windows.Foundation.h>
 #endif
 int main()
-{
+<%
 	Main::loop::therealloop::realmain();
 	return 0;
-}
+%>

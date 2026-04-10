@@ -88,24 +88,24 @@
 #endif
 
 namespace Main
-{
+<%
 	namespace Memory
-	{
+	<%
 		namespace Registry
-		{
+		<%
 			namespace numbers
-			{
+			<%
 				static double* UniversalRegistry = nullptr;
 				static const int REGISTRY_SIZE = 65536;
-			}
+			%>
 			namespace functions
-			{
+			<%
 				void InitializeRegistry();
                 template <typename T>
 				T FetchNumberRecursive(T target, int index);
                 template <typename T>
                 T FetchNumber(T target);
-			}
-		}
-	}
-}
+			%>
+		%>
+	%>
+%>
